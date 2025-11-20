@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ed7d892010c576af68b2f39c6cbfaa08 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ed7d892010c576af68b2f39c6cbfaa08" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ed7d892010c576af68b2f39c6cbfaa08 = L.map(
+                "map_ed7d892010c576af68b2f39c6cbfaa08",
+                {
+                    center: [-23.534564, -46.654302],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_407d0de797e7a62378d6fdbd95004530 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_407d0de797e7a62378d6fdbd95004530.addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var marker_3429820427e27004f806146652818d4b = L.marker(
+                [-23.534564, -46.654302],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_939a655873e898cad1dec26ef8f993fe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_466b7b3e28e444f65f2297611d2839c2 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c501fbd14a76c6382713114e2ccc69aa = $(`<div id="html_c501fbd14a76c6382713114e2ccc69aa" style="width: 100.0%; height: 100.0%;">*Parada:* ANGELICA B/C<br>*Endereço:* AV   ANGELICA<br>*Cód:* 7014417</div>`)[0];
+                popup_466b7b3e28e444f65f2297611d2839c2.setContent(html_c501fbd14a76c6382713114e2ccc69aa);
+            
+        
+
+        marker_3429820427e27004f806146652818d4b.bindPopup(popup_466b7b3e28e444f65f2297611d2839c2)
+        ;
+
+        
+    
+    
+                marker_3429820427e27004f806146652818d4b.setIcon(icon_939a655873e898cad1dec26ef8f993fe);
+            
+    
+            var marker_c1d9cbd1d13fa02ea2672f31cb2bf40c = L.marker(
+                [-23.525799, -46.679251],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_e15a11690369c9af417d73f9dffe9074 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_320f0b3e63fec26e4273a28756118353 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_1182ce7d39ce53cda9c60ca658a7dc7f = $(`<div id="html_1182ce7d39ce53cda9c60ca658a7dc7f" style="width: 100.0%; height: 100.0%;">*Parada:* PARADA PALMEIRAS B/C<br>*Endereço:* R PADRE ANTONIO TOMAS/ AV POMPEIA<br>*Cód:* 60016784</div>`)[0];
+                popup_320f0b3e63fec26e4273a28756118353.setContent(html_1182ce7d39ce53cda9c60ca658a7dc7f);
+            
+        
+
+        marker_c1d9cbd1d13fa02ea2672f31cb2bf40c.bindPopup(popup_320f0b3e63fec26e4273a28756118353)
+        ;
+
+        
+    
+    
+                marker_c1d9cbd1d13fa02ea2672f31cb2bf40c.setIcon(icon_e15a11690369c9af417d73f9dffe9074);
+            
+    
+            var marker_d69864759d339dc7dfe95d2501b2c941 = L.marker(
+                [-23.526523, -46.673588],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_9d511ed0375547ce1285af3478e6d900 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0bc6ccfd4ed91d8d43fe3690ccb00262 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_65948b7be0b7d951b5aa4d315de9fe82 = $(`<div id="html_65948b7be0b7d951b5aa4d315de9fe82" style="width: 100.0%; height: 100.0%;">*Parada:* ANTARTICA B/C<br>*Endereço:* PC SOUSA ARANHA/ VDTO ANTARTICA<br>*Cód:* 60016786</div>`)[0];
+                popup_0bc6ccfd4ed91d8d43fe3690ccb00262.setContent(html_65948b7be0b7d951b5aa4d315de9fe82);
+            
+        
+
+        marker_d69864759d339dc7dfe95d2501b2c941.bindPopup(popup_0bc6ccfd4ed91d8d43fe3690ccb00262)
+        ;
+
+        
+    
+    
+                marker_d69864759d339dc7dfe95d2501b2c941.setIcon(icon_9d511ed0375547ce1285af3478e6d900);
+            
+    
+            var marker_aa28d6dd84ea169be956b7e88fb66a5c = L.marker(
+                [-23.528131, -46.670652],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_412d4c6a643c76bf20a76ed791a17d3c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd65d401bbaabd3c09dbf77031276541 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a8afa9db6001796b38c40c76ac82aa2a = $(`<div id="html_a8afa9db6001796b38c40c76ac82aa2a" style="width: 100.0%; height: 100.0%;">*Parada:* BABY BARIONY B/C<br>*Endereço:* R DONA GERMAINE BUCHARD/ R MINISTRO GODOI<br>*Cód:* 60016788</div>`)[0];
+                popup_bd65d401bbaabd3c09dbf77031276541.setContent(html_a8afa9db6001796b38c40c76ac82aa2a);
+            
+        
+
+        marker_aa28d6dd84ea169be956b7e88fb66a5c.bindPopup(popup_bd65d401bbaabd3c09dbf77031276541)
+        ;
+
+        
+    
+    
+                marker_aa28d6dd84ea169be956b7e88fb66a5c.setIcon(icon_412d4c6a643c76bf20a76ed791a17d3c);
+            
+    
+            var marker_020f230fdd2764085aa04432be382f19 = L.marker(
+                [-23.53021, -46.6669],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_72f2927decaa4cf06f5461d7313e8665 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52c9551ae19c4adc48bcf9c4ab721ae7 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e5575c9a75716a6a7a592f948fe285f3 = $(`<div id="html_e5575c9a75716a6a7a592f948fe285f3" style="width: 100.0%; height: 100.0%;">*Parada:* PQ. DA ÁGUA BRANCA B/C<br>*Endereço:* R MINISTRO GODOI/ R LINCOLN ALBUQUERQUE<br>*Cód:* 60016790</div>`)[0];
+                popup_52c9551ae19c4adc48bcf9c4ab721ae7.setContent(html_e5575c9a75716a6a7a592f948fe285f3);
+            
+        
+
+        marker_020f230fdd2764085aa04432be382f19.bindPopup(popup_52c9551ae19c4adc48bcf9c4ab721ae7)
+        ;
+
+        
+    
+    
+                marker_020f230fdd2764085aa04432be382f19.setIcon(icon_72f2927decaa4cf06f5461d7313e8665);
+            
+    
+            var marker_6528047edf750ef3a42990eaaebe1951 = L.marker(
+                [-23.52494, -46.698995],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_b40df222aa5a71bd62ab42bf6d8b525e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fe5f29b86a6a50afa51d50c28a6c0140 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5714c8d0eff8d6d4c2b660febcb45315 = $(`<div id="html_5714c8d0eff8d6d4c2b660febcb45315" style="width: 100.0%; height: 100.0%;">*Parada:* SCIPIAO B/C<br>*Endereço:* R SCIPIAO/ R AURELIA<br>*Cód:* 480014612</div>`)[0];
+                popup_fe5f29b86a6a50afa51d50c28a6c0140.setContent(html_5714c8d0eff8d6d4c2b660febcb45315);
+            
+        
+
+        marker_6528047edf750ef3a42990eaaebe1951.bindPopup(popup_fe5f29b86a6a50afa51d50c28a6c0140)
+        ;
+
+        
+    
+    
+                marker_6528047edf750ef3a42990eaaebe1951.setIcon(icon_b40df222aa5a71bd62ab42bf6d8b525e);
+            
+    
+            var marker_5bfb9b10a82d91275760d17bd661e9d2 = L.marker(
+                [-23.524994, -46.695297],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_fb3aac69781cf70b64a62758fa7d3ba2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f706a847a26ea37dd5a427e91bdb0e70 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_9008e18169c7466c1b722723908e953d = $(`<div id="html_9008e18169c7466c1b722723908e953d" style="width: 100.0%; height: 100.0%;">*Parada:* VESPASIANO B/C<br>*Endereço:* R VESPASIANO/ R CAIO GRACO<br>*Cód:* 480014613</div>`)[0];
+                popup_f706a847a26ea37dd5a427e91bdb0e70.setContent(html_9008e18169c7466c1b722723908e953d);
+            
+        
+
+        marker_5bfb9b10a82d91275760d17bd661e9d2.bindPopup(popup_f706a847a26ea37dd5a427e91bdb0e70)
+        ;
+
+        
+    
+    
+                marker_5bfb9b10a82d91275760d17bd661e9d2.setIcon(icon_fb3aac69781cf70b64a62758fa7d3ba2);
+            
+    
+            var marker_28c94bdcd1aea683eda8727610042b8b = L.marker(
+                [-23.525029, -46.690074],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_1ef9cb8abb8002c161781e714be8ef75 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8578748a8d0c0c6e9ae874ad2ae431ce = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_bc8efca586fc534b20fa04dc008459cb = $(`<div id="html_bc8efca586fc534b20fa04dc008459cb" style="width: 100.0%; height: 100.0%;">*Parada:* CORNELIA<br>*Endereço:* R CLAUDIO/ R CRASSO<br>*Cód:* 480014614</div>`)[0];
+                popup_8578748a8d0c0c6e9ae874ad2ae431ce.setContent(html_bc8efca586fc534b20fa04dc008459cb);
+            
+        
+
+        marker_28c94bdcd1aea683eda8727610042b8b.bindPopup(popup_8578748a8d0c0c6e9ae874ad2ae431ce)
+        ;
+
+        
+    
+    
+                marker_28c94bdcd1aea683eda8727610042b8b.setIcon(icon_1ef9cb8abb8002c161781e714be8ef75);
+            
+    
+            var marker_b2c311006598a58e240fcfcc8a573d30 = L.marker(
+                [-23.523407, -46.700541],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_b101abead26ae0798792addd50eff6b7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6bb68412336e4cc69bdd90fa4cf51848 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_cf4febd8cf69749c6788d5efc16aebee = $(`<div id="html_cf4febd8cf69749c6788d5efc16aebee" style="width: 100.0%; height: 100.0%;">*Parada:* CATAO B/C<br>*Endereço:* R FAUSTOLO/ R ROMA<br>*Cód:* 480014961</div>`)[0];
+                popup_6bb68412336e4cc69bdd90fa4cf51848.setContent(html_cf4febd8cf69749c6788d5efc16aebee);
+            
+        
+
+        marker_b2c311006598a58e240fcfcc8a573d30.bindPopup(popup_6bb68412336e4cc69bdd90fa4cf51848)
+        ;
+
+        
+    
+    
+                marker_b2c311006598a58e240fcfcc8a573d30.setIcon(icon_b101abead26ae0798792addd50eff6b7);
+            
+    
+            var marker_c3c9b7a57c733bfaf41cb6031a4986c4 = L.marker(
+                [-23.52517, -46.683408],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_19112201004a0a0cf785e416c3a891a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4d51f9008f79271e8f66f7efce552f43 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4be630eb17c8d5a7f3fe1b7cf0086582 = $(`<div id="html_4be630eb17c8d5a7f3fe1b7cf0086582" style="width: 100.0%; height: 100.0%;">*Parada:* SESC POMPEIA B/C<br>*Endereço:* R TURIASSU/ R BARAO DO BANANAL<br>*Cód:* 610014603</div>`)[0];
+                popup_4d51f9008f79271e8f66f7efce552f43.setContent(html_4be630eb17c8d5a7f3fe1b7cf0086582);
+            
+        
+
+        marker_c3c9b7a57c733bfaf41cb6031a4986c4.bindPopup(popup_4d51f9008f79271e8f66f7efce552f43)
+        ;
+
+        
+    
+    
+                marker_c3c9b7a57c733bfaf41cb6031a4986c4.setIcon(icon_19112201004a0a0cf785e416c3a891a9);
+            
+    
+            var marker_61ea8f7f721983bf0bce2ad1c8839f23 = L.marker(
+                [-23.540545, -46.643624],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_b2268057e2d239a130db2c1b8a3b2649 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_974057e1f95824d05aac3c86ed026409 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_60515b59cf90e0125edffde42e7681b7 = $(`<div id="html_60515b59cf90e0125edffde42e7681b7" style="width: 100.0%; height: 100.0%;">*Parada:* VITORIA B/C<br>*Endereço:* R VITORIA/ AL BARAO DE CAMPINAS<br>*Cód:* 670010530</div>`)[0];
+                popup_974057e1f95824d05aac3c86ed026409.setContent(html_60515b59cf90e0125edffde42e7681b7);
+            
+        
+
+        marker_61ea8f7f721983bf0bce2ad1c8839f23.bindPopup(popup_974057e1f95824d05aac3c86ed026409)
+        ;
+
+        
+    
+    
+                marker_61ea8f7f721983bf0bce2ad1c8839f23.setIcon(icon_b2268057e2d239a130db2c1b8a3b2649);
+            
+    
+            var marker_f0c26aa47b42d98ff88f2686e54dfc2b = L.marker(
+                [-23.532847, -46.657404],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_123845de956a04934ce9f44e235bf8f0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b1b64ed932d852c3a000e3dcb5f47ad9 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_96e8fea290e35d44036df77d04288134 = $(`<div id="html_96e8fea290e35d44036df77d04288134" style="width: 100.0%; height: 100.0%;">*Parada:* ROSA E SILVA C/B<br>*Endereço:* R OLIMPIA DE ALMEIDA PRADO/ R LOPES DE OLIVEIRA<br>*Cód:* 700006086</div>`)[0];
+                popup_b1b64ed932d852c3a000e3dcb5f47ad9.setContent(html_96e8fea290e35d44036df77d04288134);
+            
+        
+
+        marker_f0c26aa47b42d98ff88f2686e54dfc2b.bindPopup(popup_b1b64ed932d852c3a000e3dcb5f47ad9)
+        ;
+
+        
+    
+    
+                marker_f0c26aa47b42d98ff88f2686e54dfc2b.setIcon(icon_123845de956a04934ce9f44e235bf8f0);
+            
+    
+            var marker_3a1d3ce445c98c6b1a151d59428ab698 = L.marker(
+                [-23.538708, -46.646888],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_ad8e05efe100454e2456ba2786997f94 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25dcaab327a43df9361da8ba15b989ef = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7eb79f3e19ad211dec592e43d098e62c = $(`<div id="html_7eb79f3e19ad211dec592e43d098e62c" style="width: 100.0%; height: 100.0%;">*Parada:* ANA CINTRA B/C<br>*Endereço:* R DOUTOR FREDERICO STEIDEL/ AV DUQUE DE CAXIAS<br>*Cód:* 700016623</div>`)[0];
+                popup_25dcaab327a43df9361da8ba15b989ef.setContent(html_7eb79f3e19ad211dec592e43d098e62c);
+            
+        
+
+        marker_3a1d3ce445c98c6b1a151d59428ab698.bindPopup(popup_25dcaab327a43df9361da8ba15b989ef)
+        ;
+
+        
+    
+    
+                marker_3a1d3ce445c98c6b1a151d59428ab698.setIcon(icon_ad8e05efe100454e2456ba2786997f94);
+            
+    
+            var marker_6c3eea501d37f1e9a3e5075b313e32dc = L.marker(
+                [-23.532068, -46.660957],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_7524220c5f78f02c3898407094ca35a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e1a75dff27d2acb9c58f98c78a2596b0 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_0a0fb69e54321ad340f6f891bb2c4f34 = $(`<div id="html_0a0fb69e54321ad340f6f891bb2c4f34" style="width: 100.0%; height: 100.0%;">*Parada:* PACAEMBU B/C<br>*Endereço:* R FRANCISCO ESTACIO FORTES/ AV PACAEMBU<br>*Cód:* 700016791</div>`)[0];
+                popup_e1a75dff27d2acb9c58f98c78a2596b0.setContent(html_0a0fb69e54321ad340f6f891bb2c4f34);
+            
+        
+
+        marker_6c3eea501d37f1e9a3e5075b313e32dc.bindPopup(popup_e1a75dff27d2acb9c58f98c78a2596b0)
+        ;
+
+        
+    
+    
+                marker_6c3eea501d37f1e9a3e5075b313e32dc.setIcon(icon_7524220c5f78f02c3898407094ca35a2);
+            
+    
+            var marker_433413bf942d27ea3421b7a151ba22f9 = L.marker(
+                [-23.536318, -46.651201],
+                {
+}
+            ).addTo(map_ed7d892010c576af68b2f39c6cbfaa08);
+        
+    
+            var icon_f545ecdc55ac8542fa2ae79157d203c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec875887febff6202ed91adcd0ac28b5 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_37fd97a40474574e8c55858a8b54958b = $(`<div id="html_37fd97a40474574e8c55858a8b54958b" style="width: 100.0%; height: 100.0%;">*Parada:* NOTHMANN C/B<br>*Endereço:* R GENERAL JULIO MARCONDES SALGADO/ AL NOTHMANN<br>*Cód:* 700016866</div>`)[0];
+                popup_ec875887febff6202ed91adcd0ac28b5.setContent(html_37fd97a40474574e8c55858a8b54958b);
+            
+        
+
+        marker_433413bf942d27ea3421b7a151ba22f9.bindPopup(popup_ec875887febff6202ed91adcd0ac28b5)
+        ;
+
+        
+    
+    
+                marker_433413bf942d27ea3421b7a151ba22f9.setIcon(icon_f545ecdc55ac8542fa2ae79157d203c1);
+            
+</script>
+</html>

@@ -1,0 +1,112 @@
+---
+title: "Atividade 02 - Monitoramento de Ônibus"
+description: ""
+author: "Rafael Baraúna"
+date: "11/18/2025"
+categories:
+    - sptrans
+    - python
+---
+
+## Resumo do projeto
+
+Ele inicia o processo ao estabelecer uma conexão segura com a API, utilizando a biblioteca requests para se autenticar com o SPTRANS_TOKEN fornecido. Essa etapa de autenticação é fundamental para obter um identificador de sessão que permitirá as chamadas subsequentes à API. Após completar a autenticação, o programa realiza duas requisições principais: Primeiramente, busca as paradas de ônibus ao longo da rota definida pela CODIGO_LINHA (2506 neste exemplo), recebendo informações como nome, endereço e coordenadas de cada ponto de parada. 
+
+Em seguida, ele consulta a localização atual da frota da mesma linha, coletando as coordenadas, o número do veículo e a hora da última atualização de cada ônibus ativo. Com essas informações, o script faz uso da biblioteca Folium para criar um mapa interativo em HTML. Primeiramente, ele define um ponto central para o mapa baseando-se na localização da primeira parada ou do primeiro ônibus encontrado. Então, ele percorre os dados: As paradas são inseridas no mapa como marcadores azuis com um ícone de informação, e um popup fornece detalhes, como nome e endereço da parada ao ser clicado. Os ônibus são marcados em vermelho com um ícone de ônibus, e o popup exibe informações como o prefixo do veículo, a linha e a acessibilidade. Finalmente, o mapa completo, que inclui todas as paradas e as localizações dos ônibus, é salvo no arquivo monitoramento_onibus_sptrans.html, que pode ser acessado em qualquer navegador para visualização.
+
+```{python}
+import os
+from dotenv import load_dotenv
+import requests
+import folium 
+
+load_dotenv(".env")
+
+CODIGO_LINHA = 2506
+OUTPUT_FILENAME = "monitoramento_onibus_sptrans.html"
+
+s = requests.Session()
+
+try:
+    auth_url = f"http://api.olhovivo.sptrans.com.br/v2.1/Login/Autenticar?token={os.getenv('SPTRANS_TOKEN')}"
+    res = s.post(auth_url)
+    
+    if res.text.lower() == 'true':
+        pass
+    else:
+        exit()
+
+except requests.exceptions.RequestException as e:
+    exit()
+
+def buscar_paradas_por_linha(codigo_linha):
+    paradas_url = f"http://api.olhovivo.sptrans.com.br/v2.1/Parada/BuscarParadasPorLinha?codigoLinha={codigo_linha}"
+    res = s.get(paradas_url)
+    if res.status_code == 200:
+        data = res.json()
+        return data
+    else:
+        return []
+
+def buscar_posicao_frota(codigo_linha):
+    frota_url = f"http://api.olhovivo.sptrans.com.br/v2.1/Posicao?codigoLinha={codigo_linha}"
+    res = s.get(frota_url)
+    if res.status_code == 200:
+        data = res.json()
+        veiculos = data.get('vs', []) 
+        hora_atualizacao = data.get('hr', 'N/A')
+        return veiculos, hora_atualizacao
+    else:
+        return [], 'N/A'
+
+paradas = buscar_paradas_por_linha(CODIGO_LINHA)
+
+frota, hora_atualizacao = buscar_posicao_frota(CODIGO_LINHA)
+
+if paradas:
+    center_lat, center_lon = paradas[0]['py'], paradas[0]['px']
+elif frota:
+    center_lat, center_lon = frota[0]['py'], frota[0]['px']
+else:
+    center_lat, center_lon = -23.5505, -46.6333 
+
+m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
+
+for p in paradas:
+    popup_text = f"*Parada:* {p['np']}<br>*Endereço:* {p['ed']}<br>*Cód:* {p['cp']}"
+    folium.Marker(
+        location=[p['py'], p['px']], 
+        popup=folium.Popup(popup_text, max_width=200),
+        icon=folium.Icon(color='blue', icon='info-sign')
+    ).add_to(m)
+
+if frota:
+    for v in frota:
+        acessibilidade = "Sim" if v.get('a') else "Não"
+        popup_text = (
+            f"*Ônibus:* {v.get('p', 'N/A')}<br>"
+            f"*Linha:* {v.get('l', 'N/A')}<br>"
+            f"*Acessível:* {acessibilidade}<br>"
+            f"*Última Posição:* {v.get('t', 'N/A')}"
+        )
+        folium.Marker(
+            location=[v['py'], v['px']], 
+            popup=folium.Popup(popup_text, max_width=200),
+            icon=folium.Icon(color='red', icon='bus')
+        ).add_to(m)
+    
+    
+    folium.Marker(
+        [center_lat + 0.01, center_lon], 
+        icon=folium.DivIcon(html=f'<div style="font-size: 14pt; color: black; background-color: yellow; padding: 5px; border-radius: 5px;">Atualizado: {hora_atualizacao}</div>')
+    ).add_to(m)
+
+m.save(OUTPUT_FILENAME)
+```
+
+<iframe
+    src="monitoramento_onibus_sptrans.html"
+    width="100%"
+    height="600px"
+    >
+</iframe>
