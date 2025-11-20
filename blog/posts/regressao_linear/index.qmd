@@ -1,0 +1,104 @@
+---
+title: "Atividade 03 - Regressão Linear"
+description: ""
+author: "Rafael Baraúna"
+date: "11/18/2025"
+categories:
+    - regressão linear
+    - python
+---
+
+## Resumo do projeto
+
+O código começa ao carregar informações de duas fontes: ARQUIVO_X (Anos de Estudo) e ARQUIVO_Y (Salário). X_data representa a variável independente ou preditora, enquanto y representa a variável dependente ou alvo. Ambas as fontes de dados são carregadas como arrays do NumPy, assegurando que estejam adequadas para operações de matrizes. O bloco try...except é utilizado para tratar a eventual ausência dos arquivos.
+
+Preparação da Matriz de Design
+
+Para que seja possível resolver a Regressão Linear Simples (y = ax + b) por meio do método matricial, é necessário representar o termo de intercepto (b). A linha X_design = np.insert(X_data, 0, 1, axis=1) cria a matriz de design (X), inserindo uma coluna de 1s na primeira posição (axis=1) de X_data. Esta coluna de 1s viabiliza que o cálculo matricial obtenha o valor do intercepto.
+
+Cálculo dos Coeficientes (Solução Analítica)
+
+O código determina os coeficientes ótimos (θ) para a linha de regressão utilizando a Fórmula da Solução Analítica (ou Equação Normal), empregada no método de Mínimos Quadrados Ordinários (OLS). A fórmula a ser aplicada é a seguinte: θ = (X^T X)^{-1} X^T y. O script executa essa equação em várias etapas:
+
+XTX = X_design.T @ X_design: Calcula a matriz de covariância (X^T X).
+XTX_inv = np.linalg.inv(XTX): Obtém o inverso de (X^T X).
+XTy = X_design.T @ y: Realiza o cálculo de (X^T y).
+theta = XTX_inv @ XTy: Computa o vetor final θ.
+
+O vetor theta é composto pelos coeficientes da linha:
+b = theta[0, 0]: Representa o Intercepto (b).
+a = theta[1, 0]: Denota o Coeficiente Angular (a - a inclinação da linha).
+
+ Geração da Reta de Regressão
+
+Com os coeficientes a e b estipulados, o script desenvolve a linha de regressão que será apresentada:
+Ele determina 100 pontos (X_line) distribuídos uniformemente entre os menores e maiores valores de X.
+Em seguida, computa o valor correspondente de y (y_line) para cada um desses 100 pontos com base na equação linear: y_line = a * X_line + b.
+
+ Visualização com Plotly
+
+A etapa final cria um gráfico interativo para demonstrar os resultados:
+Os dados originais e os pontos da linha de regressão são organizados em DataFrames utilizando o Pandas.
+fig = px.scatter(...): Gera um gráfico de dispersão (scatter) com os dados originais (Anos de Estudo vs. Salário).
+fig.add_scatter(...): Incorpora a linha de regressão (mode='lines') ao gráfico de dispersão, e o tooltip (nome) da linha inclui os valores de a e b.
+fig.write_html(...): Salva o gráfico em um arquivo HTML para que seja portátil e interativo.
+
+```{python}
+import numpy as np
+import plotly.express as px
+import pandas as pd
+
+ARQUIVO_X = 'X.txt'
+ARQUIVO_Y = 'y.txt'
+
+data_loaded_successfully = False 
+
+try:
+    X_data = np.loadtxt(ARQUIVO_X, delimiter=',').reshape(-1, 1)
+    y = np.loadtxt(ARQUIVO_Y, delimiter=',').reshape(-1, 1)
+    data_loaded_successfully = True
+except FileNotFoundError:
+    exit()
+
+if data_loaded_successfully:
+    X_design = np.insert(X_data, 0, 1, axis=1)
+    
+    XTX = X_design.T @ X_design
+    
+    XTX_inv = np.linalg.inv(XTX)
+    
+    XTy = X_design.T @ y
+
+    theta = XTX_inv @ XTy
+
+    b = theta[0, 0]  
+    a = theta[1, 0]  
+
+    X_min = X_data.min()
+    X_max = X_data.max()
+
+    X_line = np.linspace(X_min, X_max, 100)
+    y_line = a * X_line + b
+
+    df_data = pd.DataFrame({'Anos_Estudo (X)': X_data.flatten(), 'Salario (y)': y.flatten()})
+    df_line = pd.DataFrame({'Anos_Estudo (X)': X_line, 'Salario (y)': y_line})
+
+    
+    fig = px.scatter(df_data, x='Anos_Estudo (X)', y='Salario (y)',
+                     title=f'Regressão Linear: Salário vs. Anos de Estudo',
+                     labels={'Anos_Estudo (X)': 'Anos de Estudo', 'Salario (y)': 'Salário'})
+
+    
+    fig.add_scatter(x=df_line['Anos_Estudo (X)'], y=df_line['Salario (y)'], mode='lines',
+                    name=f'Reta Estimada (y = {a:.2f}x + {b:.2f})',
+                    line=dict(color='red'))
+    
+    fig.write_html("regressao_linear_plotly.html")
+```
+
+<iframe
+    src="regressao_linear_plotly.html"
+    width="100%"
+    height="600px"
+    >
+</iframe>

@@ -1,0 +1,104 @@
+---
+title: "Atividade 01 - Cotação do Dólar"
+description: ""
+author: "Rafael Baraúna"
+date: "11/18/2025"
+categories:
+    - dólar
+    - python
+---
+
+Primeiramente, procura o primeiro e ultimo dia do mês com a biblioteca datetime para então com a biblioteca requests buscar pelos dados daquele mês. Após isso, organiza os dados em listas: compra, venda e dias. Como faltam dados de alguns dias, busca os dados do ultimo dia útil e insere nas listas criadas anteriormente.
+
+Por fim, organiza os dados em DataFrames com pandas para enfim gerar o gráfico e salvar em um arquivo .html.
+
+```{python}
+import requests
+import pandas as pd
+import plotly.express as px
+import calendar
+from datetime import datetime, timedelta
+
+OUTPUT_FILENAME = "grafico_cotacao_dolar.html"
+
+first_date = datetime.strptime("092022", "%m%Y")
+last_date = first_date.replace(day = calendar.monthrange(first_date.year, first_date.month)[1])
+
+first_date = datetime.strftime(first_date, "%m%d%Y")
+last_date = datetime.strftime(last_date, "%m%d%Y")
+
+def buscar_cotacao_mes(first, last):
+    url = fr"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='{first}'&@dataFinalCotacao='{last}'&$top=100&$format=json"
+
+    res = requests.get(url)
+
+    if res.status_code == 200:
+        res = res.json()
+        return res['value']
+    else:
+        return []
+
+def buscar_cotacao_dia(day):
+    url = fr"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='{day}'&$format=json"
+
+    res = requests.get(url)
+    res = res.json()
+
+    if res['value']: 
+        return res['value'][0]['cotacaoCompra'], res['value'][0]['cotacaoVenda'], int(res['value'][0]['dataHoraCotacao'][8:10])
+    else:
+        dia_anterior = datetime.strptime(day, "%m%d%Y") - timedelta(1)
+        dia_anterior = datetime.strftime(dia_anterior, "%m%d%Y")
+        return buscar_cotacao_dia(dia_anterior)
+
+cotacao = buscar_cotacao_mes(first_date, last_date)
+
+valores_compra = []
+valores_venda = []
+dias = []
+
+for item in cotacao:
+    valores_compra.append(item['cotacaoCompra'])
+    valores_venda.append(item['cotacaoVenda'])
+    dias.append(int(item['dataHoraCotacao'][8:10]))
+
+MES = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+    ]
+
+for i in set(MES) - set(dias):
+    if i < 10:
+        i = '0' + f'{i}'
+    compra, venda, dia = buscar_cotacao_dia(f'09{i}2018')
+    valores_compra.append(compra)
+    valores_venda.append(venda)
+    dias.append(int(i))
+
+dias = sorted(dias)
+
+compra = pd.DataFrame({
+    "preco": valores_compra,
+    "tipo": "Compra",
+    "dia": dias
+})
+
+venda = pd.DataFrame({
+    "preco": valores_venda,
+    "tipo": "Venda",
+    "dia": dias
+})
+
+df = pd.concat([compra, venda], ignore_index=True)
+
+fig = px.line(df, x="dia", y="preco", color='tipo')
+fig.write_html(OUTPUT_FILENAME)
+```
+
+<iframe
+    src="grafico_cotacao_dolar.html"
+    width="100%"
+    height="600px"
+    >
+</iframe>
